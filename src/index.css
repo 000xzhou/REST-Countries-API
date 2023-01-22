@@ -1,0 +1,59 @@
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background: rgb(39, 37, 37);
+  color: aliceblue;
+}
+
+header {
+  display: flex;
+  background-color: rgb(53, 63, 53);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* countires */
+.formCountry input {
+  background-color: rgb(53, 63, 53);
+}
+
+.filterRegion2 {
+  display: none;
+}
+
+.countires {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.countiresImg {
+  width: 20rem;
+  height: 10rem;
+  object-fit: cover;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+
+.countiresBorder {
+  padding: 1rem;
+  inline-size: calc(20rem - 2rem);
+  overflow-wrap: break-word;
+  margin: auto;
+}
+
+.countiresInfo {
+  border: 1px solid transparent;
+  max-width: 30rem;
+  height: 25rem;
+  background-color: rgb(53, 63, 53);
+  border-radius: 0.3rem;
+}
+
+.countiresInfo:hover {
+  border: 1px solid white;
+}
