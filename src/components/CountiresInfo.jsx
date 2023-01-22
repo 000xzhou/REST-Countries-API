@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const CountiresInfo = ({ searchResults }) => {
 
     return (
-        <main className='countires'>
+        <div className='countires'>
             {
                 searchResults.map(country =>
                     <Link to={`/country/${country.name.common}`}>
@@ -20,7 +20,7 @@ const CountiresInfo = ({ searchResults }) => {
                     </Link>
                 )
             }
-        </main>
+        </div>
     )
 }
 

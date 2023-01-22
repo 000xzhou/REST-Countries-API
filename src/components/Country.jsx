@@ -45,16 +45,15 @@ const Country = ({ countries }) => {
                         <img src={country.flags.png} alt="" />
                         <div>
                             <h2>{country.name.common}</h2>
-                            <p>Native Name: {country.altSpellings.map(native => <li key={native}>{native}</li>)}</p>
-                            <p>Population: {country.population}</p>
+                            <p>Native Name: {country.altSpellings.join(", ")}</p>
+                            <p>Population: {country.population.toLocaleString("en-US")}</p>
                             <p>Region: {country.region}</p>
                             {country.subregion ? <p>Sub Region: {country.subregion}</p> : <p>Sub Region: None</p>}
                             {country.capital ? <p>Capital: {country.capital}</p> : <p>Capital: None</p>}
                             <p>Top Level Domain: {country.tld}</p>
                             <p>Currencies: {country.currencies ? country.currencies[(Object.keys(country.currencies))[0]].name : <>None</>}</p>
                             {/* {country.currencies[(Object.keys(country.currencies))[1]] ? <p>Currencies: {country.currencies[(Object.keys(country.currencies))[1]].name} </p> : <></>} */}
-                            <p>Languages:
-                                {country.languages ? Object.values(country.languages).map(lang => <li key={lang}>{lang}</li>) : <>None</>}
+                            <p>Languages: {country.languages ? Object.values(country.languages).join(", ") : <>None</>}
                             </p>
                         </div>
                         {/* {country.borders ? <div>Border Countires: {country.borders.map(border => <li>{border}</li>)}</div> : <div>Border Countires: None</div>} */}

@@ -1,33 +1,100 @@
+:root {
+  --foreground-color: hsl(200, 15%, 8%);
+  --background-color: hsl(0, 0%, 98%);
+  --element-color: hsl(0, 0%, 100%);
+  --border-color: hsla(0, 0%, 68%, 0.5);
+  --input-color: hsl(0, 0%, 100%);
+
+  --max-width: 1440px;
+
+  --fw-300: 300;
+  --fw-600: 600;
+  --fw-800: 800;
+
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+}
+
+.darkMode {
+  --foreground-color: hsl(0, 0%, 100%);
+  --background-color: hsl(207, 26%, 17%);
+  --element-color: hsl(209, 23%, 22%);
+  --border-color: hsla(208, 23%, 15%, 0.5);
+  --input-color: hsl(209, 23%, 22%);
+}
+
 body {
   box-sizing: border-box;
-  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: var(--background-color);
   margin: 0;
-  background: rgb(39, 37, 37);
-  color: aliceblue;
 }
 
 header {
+  background-color: var(--element-color);
+  color: var(--foreground-color);
+  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
+}
+
+.inner-header {
+  max-width: var(--max-width);
+  margin: auto;
   display: flex;
-  background-color: rgb(53, 63, 53);
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.overall {
+  background: var(--background-color);
+  color: var(--foreground-color);
+  max-width: var(--max-width);
+  margin: auto;
+  margin-top: 1rem;
+  padding: 1rem;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--foreground-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+/* // filter/imput  */
+input[type=text] {
+  padding-block: 1rem;
+  width: calc(100% - 1rem);
+  margin: auto;
+  border: 0;
+  background-color: var(--input-color);
+  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
+}
+
+::placeholder {
+  color: var(--foreground-color);
+  text-indent: 1rem;
+}
+
+.filterRegion {
+  padding-block: 1rem;
+}
+
+.filterRegion select {
+  padding: 1rem 2rem;
+  border: 0;
+  background-color: var(--input-color);
+  color: var(--foreground-color);
+  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
+  cursor: pointer;
 }
 
 /* countires */
-.formCountry input {
-  background-color: rgb(53, 63, 53);
-}
-
-.filterRegion2 {
-  display: none;
-}
-
 .countires {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -40,20 +107,19 @@ a {
 }
 
 .countiresBorder {
-  padding: 1rem;
-  inline-size: calc(20rem - 2rem);
+  padding-inline: 2rem;
   overflow-wrap: break-word;
-  margin: auto;
 }
 
 .countiresInfo {
-  border: 1px solid transparent;
-  max-width: 30rem;
+  max-width: 20rem;
   height: 25rem;
-  background-color: rgb(53, 63, 53);
+  background-color: var(--element-color);
+  border: 1px solid transparent;
   border-radius: 0.3rem;
+  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
 }
 
 .countiresInfo:hover {
-  border: 1px solid white;
+  border: 1px solid black;
 }
