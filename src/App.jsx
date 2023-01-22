@@ -5,7 +5,6 @@ import Layout from './components/Layout'
 import Country from './components/Country'
 import Countires from './components/Countires'
 import PageNotFound from './components/PageNotFound'
-import Test from './components/Test'
 
 const App = () => {
 
@@ -19,7 +18,6 @@ const App = () => {
       try {
         const response = await fetch(`${API_URL}`)
         const data = await response.json()
-        // console.log(data)
         setCountries(data)
       } catch (err) {
         console.log(err)
@@ -41,8 +39,6 @@ const App = () => {
             countries={countries}
           />} />
         </Route>
-
-        <Route path="test" element={<Test countries={countries} />} />
 
         <Route path="*" element={<PageNotFound />} />
 
