@@ -1,15 +1,32 @@
 import { useState, useEffect } from "react";
+import Sun from '../assets/sun.svg'
+import Moon from '../assets/moon.svg'
 
 const Header = () => {
-    const [theme, setTheme] = useState('light');
-    const [themeName, setThemeName] = useState("Dark Mode")
+    const [theme, setTheme] = useState('lightMode');
+    const [themeName, setThemeName] = useState(
+        <>
+            <img className="darkModeIcon" src={Moon} alt="" />
+            <div>Dark Mode</div>
+        </>
+    )
     const toggleTheme = () => {
-        if (theme === "light") {
+        if (theme === "lightMode") {
             setTheme("darkMode")
-            setThemeName("Light Mode")
+            setThemeName(
+                <>
+                    <img className="darkModeIcon" src={Sun} alt="" />
+                    <div>Light Mode</div>
+                </>
+            )
         } else {
-            setTheme("light")
-            setThemeName("Dark Mode")
+            setTheme("lightMode")
+            setThemeName(
+                <>
+                    <img className="darkModeIcon" src={Moon} alt="" />
+                    <div>Dark Mode</div>
+                </>
+            )
         }
     }
     useEffect(() => {
@@ -19,7 +36,7 @@ const Header = () => {
         <header>
             <div className={`inner-header`}>
                 <div>Where in the world?</div>
-                <button onClick={toggleTheme}>{themeName}</button>
+                <button className="darkModeBtn" onClick={toggleTheme}>{themeName}</button>
             </div>
         </header>
     )

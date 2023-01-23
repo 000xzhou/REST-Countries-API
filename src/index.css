@@ -1,10 +1,12 @@
 :root {
   --foreground-color: hsl(200, 15%, 8%);
   --background-color: hsl(0, 0%, 98%);
+  --span-color: hsl(200, 15%, 8%, 0.8);
   --element-color: hsl(0, 0%, 100%);
-  --border-color: hsla(0, 0%, 68%, 0.5);
   --input-color: hsl(0, 0%, 100%);
-
+  --box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  --invert: invert(0);
+  --border-radius: 0.3rem;
   --max-width: 1440px;
 
   --fw-300: 300;
@@ -17,10 +19,11 @@
 
 .darkMode {
   --foreground-color: hsl(0, 0%, 100%);
+  --span-color: hsla(0, 0%, 98%, 0.8);
   --background-color: hsl(207, 26%, 17%);
   --element-color: hsl(209, 23%, 22%);
-  --border-color: hsla(208, 23%, 15%, 0.5);
   --input-color: hsl(209, 23%, 22%);
+  --invert: invert(1);
 }
 
 body {
@@ -33,7 +36,7 @@ body {
 header {
   background-color: var(--element-color);
   color: var(--foreground-color);
-  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
+  box-shadow: var(--box-shadow);
 }
 
 .inner-header {
@@ -62,6 +65,58 @@ button {
   cursor: pointer;
 }
 
+/* buttons */
+.darkModeBtn {
+  background-color: transparent;
+  color: var(--foreground-color);
+  border: 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: end;
+  white-space: nowrap;
+}
+
+.darkModeIcon,
+.left-arrow,
+.search-icon {
+  max-width: 1rem;
+}
+
+.left-arrow {
+  filter: var(--invert);
+}
+
+form {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  filter: var(--invert);
+}
+
+.btn {
+  border: 0;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--element-color);
+  color: var(--foreground-color);
+}
+
+.inner-backBtn {
+  display: flex;
+  align-content: center;
+  gap: 0.5rem;
+}
+
 /* // filter/imput  */
 input[type=text] {
   padding-block: 1rem;
@@ -69,25 +124,111 @@ input[type=text] {
   margin: auto;
   border: 0;
   background-color: var(--input-color);
-  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-indent: 3rem;
 }
 
 ::placeholder {
   color: var(--foreground-color);
-  text-indent: 1rem;
+  text-indent: 3rem;
 }
 
 .filterRegion {
   padding-block: 1rem;
+  position: relative;
 }
 
 .filterRegion select {
-  padding: 1rem 2rem;
-  border: 0;
+  border: 1rem solid transparent;
+  border-radius: var(--border-radius);
+  padding-inline: 0.5rem;
   background-color: var(--input-color);
   color: var(--foreground-color);
-  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
+  box-shadow: var(--box-shadow);
+  font-size: var(--fs-16);
   cursor: pointer;
+}
+
+@media (min-width: 50rem) {
+  .search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    padding-inline: 2rem;
+  }
+
+  form {
+    width: 40%;
+  }
+}
+
+/* country  */
+.country {
+  padding-block: 1rem;
+}
+
+.country-name {
+  padding-top: 1rem;
+}
+
+.country-info {
+  padding-block: 0.5rem;
+}
+
+.country-subInfo {
+  padding-bottom: 1rem;
+}
+
+.country-borders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 50rem) {
+  .country-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .country {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+
+  .country-flag {
+    width: 100%;
+    height: 100%;
+  }
+
+  .country-overall-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .country-name {
+    grid-column: 1 / 3;
+  }
+
+  .country-borders-grid {
+    grid-column: 1/3;
+  }
+}
+
+p {
+  font-weight: var(--fw-600);
+}
+
+span {
+  font-weight: var(--fw-300);
+  color: var(--span-color);
 }
 
 /* countires */
@@ -116,10 +257,42 @@ input[type=text] {
   height: 25rem;
   background-color: var(--element-color);
   border: 1px solid transparent;
-  border-radius: 0.3rem;
-  box-shadow: 0.1rem 0.1rem 0.5rem var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
-.countiresInfo:hover {
-  border: 1px solid black;
+
+/* animations/hovers  */
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: var(--box-shadow);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.darkModeBtn .darkModeIcon {
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
+.darkModeBtn:hover .darkModeIcon {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
 }

@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import PageNotFound from './PageNotFound'
+import LeftArrow from '../assets/arrow-left.svg'
 
 const Country = ({ countries }) => {
     let { id } = useParams()
@@ -38,27 +39,37 @@ const Country = ({ countries }) => {
 
     return (
         <>
-            <button><Link to={`/`}>back</Link></button>
-            <div>
+            <button className='btn'>
+                <Link className='inner-backBtn' to={`/`}>
+                    <img className='left-arrow' src={LeftArrow} alt="" />
+                    <div>back</div>
+                </Link>
+            </button>
+            <div className='country-center'>
                 {searchResults.map(country =>
-                    <div key={country.name.common} >
-                        <img src={country.flags.png} alt="" />
-                        <div>
-                            <h2>{country.name.common}</h2>
-                            <p>Native Name: {country.altSpellings.join(", ")}</p>
-                            <p>Population: {country.population.toLocaleString("en-US")}</p>
-                            <p>Region: {country.region}</p>
-                            {country.subregion ? <p>Sub Region: {country.subregion}</p> : <p>Sub Region: None</p>}
-                            {country.capital ? <p>Capital: {country.capital}</p> : <p>Capital: None</p>}
-                            <p>Top Level Domain: {country.tld}</p>
-                            <p>Currencies: {country.currencies ? country.currencies[(Object.keys(country.currencies))[0]].name : <>None</>}</p>
-                            {/* {country.currencies[(Object.keys(country.currencies))[1]] ? <p>Currencies: {country.currencies[(Object.keys(country.currencies))[1]].name} </p> : <></>} */}
-                            <p>Languages: {country.languages ? Object.values(country.languages).join(", ") : <>None</>}
-                            </p>
+                    <div className='country' key={country.name.common} >
+                        <img className='country-flag' src={country.flags.svg} alt="" />
+                        <div className='country-overall-info'>
+                            <h2 className='country-name'>{country.name.common}</h2>
+                            <div className='country-info'>
+                                <p>Native Name: <span>{country.altSpellings.join(", ")}</span></p>
+                                <p>Population: <span>{country.population.toLocaleString("en-US")}</span></p>
+                                <p>Region: <span>{country.region}</span></p>
+                                {country.subregion ? <p>Sub Region: <span>{country.subregion}</span></p> : <p>Sub Region: <span>None</span></p>}
+                                {country.capital ? <p>Capital: <span>{country.capital}</span></p> : <p>Capital: <span>None</span></p>}
+
+                            </div>
+                            <div className='country-subInfo'>
+                                <p>Top Level Domain: <span>{country.tld}</span></p>
+                                <p>Currencies: {country.currencies ? <span>{country.currencies[(Object.keys(country.currencies))[0]].name}</span> : <span>None</span>}</p>
+                                {/* {country.currencies[(Object.keys(country.currencies))[1]] ? <p>Currencies: {country.currencies[(Object.keys(country.currencies))[1]].name} </p> : <></>} */}
+                                <p>Languages: {country.languages ? <span>{Object.values(country.languages).join(", ")}</span> : <span>None</span>}
+                                </p>
+                            </div>
+                            {country.borders ? <p className='country-borders-grid'>Border Countires: <div className='country-borders'>{getBorder.map(a => <Link to={`/country/${a.name.common}`}><button className='btn' key={a.name.common}><span>{a.name.common}</span></button></Link>)}</div></p> : <div>Border Countires: None</div>}
                         </div>
                         {/* {country.borders ? <div>Border Countires: {country.borders.map(border => <li>{border}</li>)}</div> : <div>Border Countires: None</div>} */}
 
-                        {country.borders ? <div>Border Countires: {getBorder.map(a => <Link to={`/country/${a.name.common}`}><button key={a.name.common}>{a.name.common}</button></Link>)}</div> : <div>Border Countires: None</div>}
                     </div>
                 )}
                 {

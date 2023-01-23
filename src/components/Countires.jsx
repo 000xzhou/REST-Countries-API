@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import CountiresInfo from "./CountiresInfo"
+import SearchIcon from '../assets/search.svg'
 
 const Home = ({ countries }) => {
     const [getCountry, setGetCountry] = useState("")
@@ -27,7 +28,7 @@ const Home = ({ countries }) => {
         <main>
             <div className="search">
                 <form onSubmit={e => e.preventDefault()}>
-                    <label htmlFor="country"></label>
+                    <img className="search-icon" src={SearchIcon} alt="" />
                     <input
                         id="country"
                         type="text"
@@ -37,6 +38,7 @@ const Home = ({ countries }) => {
                         onChange={e => setGetCountry(e.target.value)} />
                 </form>
                 <div className="filterRegion">
+                    {/* <img className="arrow-down" src={ArrowDown} alt="" /> */}
                     <select name="region" id="region" value={filterRegion} onChange={e => setFilterRegion(e.target.value)} aria-label="Filter Countries By Region">
                         <option hidden value="">Filter by Region</option>
                         <option value="africa">Africa</option>
