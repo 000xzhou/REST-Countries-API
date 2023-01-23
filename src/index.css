@@ -188,6 +188,12 @@ input[type=text] {
   padding-top: 1rem;
 }
 
+@media (max-width: 50rem) {
+  .country-flag {
+    width: 90vw;
+  }
+}
+
 @media (min-width: 50rem) {
   .country-center {
     margin: 0;
