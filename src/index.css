@@ -267,6 +267,20 @@ span {
   box-shadow: var(--box-shadow);
 }
 
+/* // not found  */
+.page-not-found {
+  font-size: 4rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.lost-btn {
+  font-size: 2rem;
+}
 
 /* animations/hovers  */
 
