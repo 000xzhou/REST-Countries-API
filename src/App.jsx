@@ -29,6 +29,7 @@ const App = () => {
 
   return (
     <Routes>
+      {/* because of  base: "/REST-Countries-API/" in vite config=> change it if you wanna use on other site */}
       <Route path="/" exact element={<Layout />} >
         <Route index element={<Countires
           countries={countries}

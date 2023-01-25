@@ -31,7 +31,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/000xzhou/REST-Countries-API)
-- Live Site URL: [Page](https://000xzhou.github.io/REST-Countries-API/)
+- Live Site URL: [Page](https://restcountriesxz.netlify.app/)
 
 ## My process
 I routed the page.

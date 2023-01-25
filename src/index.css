@@ -37,6 +37,8 @@ header {
   background-color: var(--element-color);
   color: var(--foreground-color);
   box-shadow: var(--box-shadow);
+  font-weight: var(--fw-800);
+  font-size: var(--fs-18);
 }
 
 .inner-header {
